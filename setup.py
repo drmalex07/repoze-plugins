@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='repoze-plugins',
     version='0.1',
-    description='Plugins for repoze.who',
+    description='A collection of repoze.who plugins',
     url='http://github.com/drmalex07/repoze-plugins',
     author='Michail Alexakis',
     author_email='drmalex07@gmail.com',
