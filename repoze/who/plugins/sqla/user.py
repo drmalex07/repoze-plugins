@@ -1,6 +1,7 @@
 import logging
 import sqlalchemy
 from zope.interface import implementer
+from zope.interface.verify import verifyClass
 from repoze.who.interfaces import (IAuthenticator, IMetadataProvider)
 from repoze.who.utils import resolveDotted
 from sqlalchemy import orm
@@ -26,8 +27,7 @@ class UserPlugin(object):
        '''
         
        user_cls = resolveDotted(kwargs['user_cls'])
-       if not IUserPassword.implementedBy(user_cls):
-           raise ValueError('%s does not implement IUserPassword' % (user_cls))
+       verifyClass(IUserPassword, user_cls, tentative=True)
 
        session_factory = resolveDotted(kwargs['session_factory'])
        if not callable(session_factory):
